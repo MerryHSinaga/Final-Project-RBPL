@@ -1,3 +1,30 @@
+<?php
+// koneksi ke database
+include('koneksi.php');
+
+// Inisialisasi nama produk
+$nama_produk = 'Produk Tidak Diketahui';
+$result = null;
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id_produk = intval($_GET['id']);
+
+    // Ambil nama produk
+    $produkQuery = "SELECT nama FROM produk WHERE id = $id_produk";
+    $produkResult = $koneksi->query($produkQuery);
+    if ($produkResult && $produkResult->num_rows > 0) {
+        $nama_produk = $produkResult->fetch_assoc()['nama'];
+    }
+
+    // Ambil ulasan untuk produk
+    $sql = "SELECT * FROM reviews WHERE produk_id = $id_produk ORDER BY id DESC";
+    $result = $koneksi->query($sql);
+} else {
+    echo '<p class="text-center text-xl font-semibold text-red-500">Produk tidak ditemukan atau ID tidak valid.</p>';
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,7 +43,6 @@
       </svg>
       Kembali
     </button>
-    
   </div>
 
   <div class="flex min-h-screen">
@@ -27,82 +53,67 @@
       </div>
       <h1 class="text-xl font-extrabold tracking-widest mb-6">MJ SPORT</h1>
       <nav class="space-y-3 w-full">
-        <a href="profiltoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
-          👥 Profil Perusahaan
-        </a>
-        <a href="aktivitastoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
-          🏪 Aktivitas Toko
-        </a>
-        <a href="daftarproduk-pengunjung.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">
-          📦 Data Produk
-        </a>
-        <a href="tampilanfeedbacktoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
-          💬 Feedback Pengunjung
-        </a>
+        <a href="profiltoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
+        <a href="aktivitastoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
+        <a href="daftarproduk-pengunjung.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">📦 Data Produk</a>
+        <a href="tampilanfeedbacktoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">💬 Feedback Pengunjung</a>
       </nav>
     </aside>
 
     <!-- Konten Utama -->
     <main class="ml-72 p-6 w-full space-y-6">
       <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl px-6 py-4 shadow">
-        <h2 class="text-base font-semibold">Ulasan Produk Jersey Ultimate Pro - Edition 2025.</h2>
+        <h2 class="text-base font-semibold">Ulasan Produk: <?= htmlspecialchars($nama_produk); ?></h2>
       </div>
 
       <!-- Daftar Ulasan -->
       <div class="space-y-6">
-        <!-- Satu kotak ulasan -->
         <?php
-        $ulasan = [
-          [
-            'user' => 'Kaize.xhz',
-            'tanggal' => '15 Desember 20:41',
-            'ukuran' => 'XXL',
-            'warna' => 'Hitam',
-            'jumlah' => 1,
-            'isi' => 'Jerseynya nyaman dipakai dan kualitas sablonnya awet, pasti beli lagi deh di sini!',
-          ],
-          [
-            'user' => 'Raphenize',
-            'tanggal' => '10 Desember 13:41',
-            'ukuran' => 'XL',
-            'warna' => 'Hitam',
-            'jumlah' => 2,
-            'isi' => 'Desain keren, bahan adem, dan pengirimannya cepat, mantap banget!',
-          ],
-          [
-            'user' => 'merry_els',
-            'tanggal' => '10 Desember 09:00',
-            'ukuran' => 'XXL',
-            'warna' => 'Hitam',
-            'jumlah' => 1,
-            'isi' => 'Asli bagus banget bahannya, pelayan toko-nya juga ga kalah ramah, bakal sering pesan jersey di sini!',
-          ]
-        ];
+        if ($result && $result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            $user = $row['nama'];
+            $tanggal = date('d F Y', strtotime($row['tanggal']));
+            $ukuran = $row['ukuran'];
+            $warna = $row['warna'];
+            $jumlah = $row['jumlah'];
+            $ulasan = $row['ulasan'];
+            $rating = $row['rating'];
+            $gambar = $row['gambar'];
 
-        foreach ($ulasan as $u) {
-          echo '
-          <div class="bg-white bg-opacity-10 backdrop-blur-md p-4 rounded-xl flex flex-col md:flex-row justify-between gap-4 shadow-lg">
-            <div class="flex-1">
-              <p class="font-bold text-sm">@' . htmlspecialchars($u["user"]) . ' <span class="font-normal text-xs text-gray-300 ml-2">' . $u["tanggal"] . '</span></p>
-              <p class="text-sm">Ukuran : ' . $u["ukuran"] . '<br>Warna : ' . $u["warna"] . '<br>Jumlah : ' . $u["jumlah"] . '</p>
-              <p class="mt-2 text-sm">Ulasan : <br><span class="italic text-white">“' . $u["isi"] . '”</span></p>
-              <p class="mt-2 text-sm font-semibold">Rating Produk :
-                <span class="text-yellow-400">★★★★★</span>
-              </p>
-            </div>
-            <div class="flex-shrink-0 flex items-center">
-              <img src="jersey1.jpg" alt="Jersey" class="w-40 rounded-xl shadow">
-            </div>
-          </div>
-          ';
+            echo '
+            <div class="bg-white bg-opacity-10 backdrop-blur-md p-4 rounded-xl flex flex-col md:flex-row justify-between gap-4 shadow-lg">
+              <div class="flex-1">
+                <p class="font-bold text-sm">@' . htmlspecialchars($user) . ' <span class="font-normal text-xs text-gray-300 ml-2">' . $tanggal . '</span></p>
+                <p class="text-sm">Ukuran : ' . htmlspecialchars($ukuran) . '<br>Warna : ' . htmlspecialchars($warna) . '<br>Jumlah : ' . htmlspecialchars($jumlah) . '</p>
+                <p class="mt-2 text-sm">Ulasan : <br><span class="italic text-white">“' . htmlspecialchars($ulasan) . '”</span></p>
+                <p class="mt-2 text-sm font-semibold">Rating Produk : ';
+
+            for ($i = 1; $i <= 5; $i++) {
+              echo $i <= $rating ? '<span class="text-yellow-400">★</span>' : '<span class="text-gray-400">☆</span>';
+            }
+
+            echo '</p>
+              </div>
+              <div class="flex-shrink-0 flex items-center">';
+            if (!empty($gambar)) {
+              echo '<img src="uploads/' . htmlspecialchars($gambar) . '" alt="Gambar Produk" class="w-40 rounded-xl shadow">';
+            } else {
+              echo '<img src="uploads/default-image.jpg" alt="Gambar Produk" class="w-40 rounded-xl shadow">';
+            }
+            echo '</div></div>';
+          }
+        } else {
+          echo '<p class="text-center text-xl font-semibold">Belum ada ulasan dari pelanggan terhadap produk ini.</p>';
         }
+
+        $koneksi->close();
         ?>
       </div>
 
       <!-- Tombol aksi -->
       <div class="flex justify-end gap-4 mt-6">
-        <button onclick="window.location.href='beriulasanproduk-pengunjung.php'" class="bg-yellow-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-black"> Beri Ulasan</button>
-        <button onclick="window.location.href='daftarproduk-pengunjung.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"> Selesai</button>
+        <button onclick="window.location.href='beriulasanproduk-pengunjung.php?id=<?= $id_produk ?>'" class="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-black">Beri Ulasan</button>
+        <button onclick="window.location.href='daftarproduk-pengunjung.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white">Selesai</button>
       </div>
     </main>
   </div>

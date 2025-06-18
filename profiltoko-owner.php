@@ -1,7 +1,14 @@
 <?php
-// Mulai sesi jika diperlukan
 session_start();
+
+// Cek apakah sudah login dan role-nya owner
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'owner') {
+    // Redirect ke halaman login atau halaman error
+    header('Location: login.php');
+    exit();
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -52,6 +59,7 @@ session_start();
         <a href="tampilanfeedbacktoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
           💬 Feedback Pengunjung
         </a>
+        <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
       </nav>
     </aside>
 

@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Cek apakah sudah login dan role-nya owner
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'owner') {
+    // Redirect ke halaman login atau halaman error
+    header('Location: login.php');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>

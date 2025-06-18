@@ -54,6 +54,7 @@ session_start();
         <a href="tampilanfeedbacktoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
           💬 Feedback Pengunjung
         </a>
+        <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
       </nav>
     </aside>
 

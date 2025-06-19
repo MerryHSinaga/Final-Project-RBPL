@@ -123,8 +123,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
       <!-- Tombol aksi -->
       <div class="flex justify-end gap-4 mt-6">
-        <button onclick="window.location.href='beriulasanproduk-pengunjung.php?id=<?= $id_produk ?>'" class="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-black">Beri Ulasan</button>
-        <button onclick="window.location.href='daftarproduk-pengunjung.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white">Selesai</button>
+        <button onclick="window.location.href='daftarproduk-admin.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white">Selesai</button>
       </div>
     </main>
   </div>

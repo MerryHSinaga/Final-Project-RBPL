@@ -1,5 +1,8 @@
 <?php
 session_start();
+require_once 'koneksi.php';
+require_once 'auth.php';
+checkAccess('admin');
 
 // Cek apakah sudah login dan role-nya admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
@@ -47,7 +50,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
           
       <h1 class="text-2xl font-extrabold tracking-widest mb-10">MJ SPORT</h1>
       <nav class="space-y-4 w-full">
-        <a href="profiltoko-aadmin.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">
+        <a href="profiltoko-admin.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">
           👥 Profil Perusahaan
         </a>
         <a href="aktivitastoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">

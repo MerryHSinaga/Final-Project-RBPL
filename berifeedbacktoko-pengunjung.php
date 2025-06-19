@@ -162,7 +162,7 @@
       <div class="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-xl shadow-md max-w-3xl mx-auto">
         <h2 class="text-xl font-bold mb-6 text-center">Bagaimana kepuasan Anda terhadap Toko MJ Sport?</h2>
 
-        <form action="proses_feedback.php" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <form action="proses_feedback-pengunjung.php" method="POST" enctype="multipart/form-data" class="space-y-4">
           <div class="space-y-4">
             <div>
               <label class="block text-sm">Tanggal</label>

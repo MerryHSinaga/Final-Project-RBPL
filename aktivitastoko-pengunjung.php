@@ -1,8 +1,3 @@
-<?php
-// Mulai sesi jika diperlukan
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>

@@ -1,7 +1,7 @@
 <?php
+include('koneksi.php');  // Menghubungkan ke database
 session_start();
 require_once 'auth.php';
-require_once 'koneksi.php';
 checkAccess('admin');
 
 $user_id = $_SESSION['user_id'];

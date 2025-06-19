@@ -1,6 +1,8 @@
 <?php
 include('koneksi.php');  // Menghubungkan ke database
-session_start(); // Memulai sesi
+session_start();
+require_once 'auth.php';
+checkAccess('admin');
 
 if (!file_exists('uploads/')) {
     mkdir('uploads/', 0777, true); // Membuat folder jika belum ada
@@ -30,10 +32,10 @@ $stmt->bind_param("ssssiss", $tanggal, $nama, $alamat, $telepon, $rating, $ulasa
 
 if ($stmt->execute()) {
     // Redirect ke halaman feedback dengan status sukses
-    header("Location: berifeedbacktoko-pengunjung.php?status=success");
+    header("Location: berifeedbacktoko-admin.php?status=success");
 } else {
     // Redirect ke halaman feedback dengan status gagal
-    header("Location: berifeedbacktoko-pengunjung.php?status=failed");
+    header("Location: berifeedbacktoko-admin.php?status=failed");
 }
 
 $stmt->close();

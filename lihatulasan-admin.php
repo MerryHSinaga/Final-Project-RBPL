@@ -1,6 +1,8 @@
 <?php
-// koneksi ke database
-include('koneksi.php');
+session_start();
+require_once 'koneksi.php';
+require_once 'auth.php';
+checkAccess('admin');
 
 // Inisialisasi nama produk
 $nama_produk = 'Produk Tidak Diketahui';
@@ -53,10 +55,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       </div>
       <h1 class="text-xl font-extrabold tracking-widest mb-6">MJ SPORT</h1>
       <nav class="space-y-3 w-full">
-        <a href="profiltoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
-        <a href="aktivitastoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
-        <a href="daftarproduk-pengunjung.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">📦 Data Produk</a>
-        <a href="tampilanfeedbacktoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">💬 Feedback Pengunjung</a>
+        <a href="profiltoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
+        <a href="aktivitastoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
+        <a href="daftarproduk-admin.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">📦 Data Produk</a>
+        <a href="tampilanfeedbacktoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">💬 Feedback Pengunjung</a>
+        <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
       </nav>
     </aside>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Feedback Pengunjung Terhadap Toko MJ Sport</title>
+  <title>Feedback owner Terhadap Toko MJ Sport</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-b from-[#123458] to-black text-white font-sans">
@@ -26,10 +26,10 @@
     </div>
     <h1 class="text-xl font-extrabold tracking-widest mb-6">MJ SPORT</h1>
     <nav class="space-y-3 w-full">
-      <a href="profiltoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
-      <a href="aktivitastoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
-      <a href="daftarproduk-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">📦 Data Produk</a>
-      <a href="tampilanfeedbacktoko-admin.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">💬 Feedback Pengunjung</a>
+      <a href="profiltoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
+      <a href="aktivitastoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
+      <a href="daftarproduk-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">📦 Data Produk</a>
+      <a href="tampilanfeedbacktoko-owner.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">💬 Feedback owner</a>
       <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
     </nav>
   </aside>
@@ -37,14 +37,16 @@
   <!-- Konten Utama -->
   <main class="ml-72 p-6 w-full space-y-6">
     <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-xl px-6 py-4 shadow">
-      <h2 class="text-base font-semibold text-center">Feedback dari Pengunjung terhadap MJ Sport</h2>
+      <h2 class="text-base font-semibold text-center">Feedback dari owner terhadap MJ Sport</h2>
     </div>
 
     <!-- Daftar Ulasan -->
     <div class="space-y-6">
       <?php
-      // Koneksi ke database
-      include('koneksi.php');
+ include('koneksi.php');  // Menghubungkan ke database
+session_start();
+require_once 'auth.php';
+checkAccess('owner');
 
       // Query untuk mendapatkan maksimal 4 feedback terbaru dari database
       $sql = "SELECT * FROM feedback_toko ORDER BY id DESC LIMIT 4";
@@ -109,8 +111,7 @@
 
     <!-- Tombol aksi -->
     <div class="flex justify-end gap-4 mt-6">
-      <button onclick="window.location.href='berifeedbacktoko-pengunjung.php'" class="bg-yellow-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-black"> Nilai Toko</button>
-      <button onclick="window.location.href='tampilanfeedbacktoko-pengunjung.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"> Selesai</button>
+      <button onclick="window.location.href='tampilanfeedbacktoko-owner.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"> Selesai</button>
     </div>
   </main>
 </div>

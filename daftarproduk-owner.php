@@ -1,5 +1,8 @@
 <?php
-require 'koneksi.php';
+include('koneksi.php');  // Menghubungkan ke database
+session_start();
+require_once 'auth.php';
+checkAccess('owner');
 $keyword = isset($_GET['keyword']) ? strtolower(trim($_GET['keyword'])) : '';
 ?>
 
@@ -16,7 +19,7 @@ $keyword = isset($_GET['keyword']) ? strtolower(trim($_GET['keyword'])) : '';
 <!-- Tombol Back dan Profil -->
 <div class="fixed top-6 right-6 z-50 flex items-center gap-4">
   <button onclick="history.back()" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-5 py-2.5 rounded-full shadow-lg">⬅ Kembali</button>
-  <a href="profiladmin.php" class="bg-white/20 hover:bg-white/30 p-2.5 rounded-full shadow-lg">👤</a>
+  <a href="profilowner.php" class="bg-white/20 hover:bg-white/30 p-2.5 rounded-full shadow-lg">👤</a>
 </div>
 
 <div class="flex min-h-screen">
@@ -83,8 +86,8 @@ $keyword = isset($_GET['keyword']) ? strtolower(trim($_GET['keyword'])) : '';
             <div><?= $stars; ?></div>
           </div>
           <div class="flex justify-between mt-4 flex-wrap gap-2">
-            <a href="lihatproduk-admin.php?id=<?= $id_produk ?>" class="bg-blue-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-white text-sm">Detail Produk</a>
-            <a href="lihatulasan-admin.php?id=<?= $id_produk ?>" class="bg-blue-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-white text-sm">Ulasan Produk</a>
+            <a href="lihatproduk-owner.php?id=<?= $id_produk ?>" class="bg-blue-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-white text-sm">Detail Produk</a>
+            <a href="lihatulasan-owner.php?id=<?= $id_produk ?>" class="bg-blue-500 hover:bg-yellow-600 px-4 py-2 rounded-lg text-white text-sm">Ulasan Produk</a>
           </div>
         </div>
       <?php

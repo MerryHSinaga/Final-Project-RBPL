@@ -1,5 +1,8 @@
 <?php
-include 'koneksi.php'; // koneksi ke database
+session_start();
+require_once 'koneksi.php';
+require_once 'auth.php';
+checkAccess('admin');
 
 // Cek apakah parameter id dikirim
 if (!isset($_GET['id']) || empty($_GET['id'])) {

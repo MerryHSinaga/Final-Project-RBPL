@@ -1,6 +1,8 @@
 <?php
-// Mulai sesi jika diperlukan
+include('koneksi.php');  // Menghubungkan ke database
 session_start();
+require_once 'auth.php';
+checkAccess('admin');
 ?>
 
 <!DOCTYPE html>

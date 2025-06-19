@@ -16,7 +16,6 @@ $keyword = isset($_GET['keyword']) ? strtolower(trim($_GET['keyword'])) : '';
 <!-- Tombol Back dan Profil -->
 <div class="fixed top-6 right-6 z-50 flex items-center gap-4">
   <button onclick="history.back()" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-5 py-2.5 rounded-full shadow-lg">⬅ Kembali</button>
-  <a href="profiladmin.php" class="bg-white/20 hover:bg-white/30 p-2.5 rounded-full shadow-lg">👤</a>
 </div>
 
 <div class="flex min-h-screen">

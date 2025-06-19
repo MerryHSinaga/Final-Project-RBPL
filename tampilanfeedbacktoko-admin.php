@@ -43,8 +43,10 @@
     <!-- Daftar Ulasan -->
     <div class="space-y-6">
       <?php
-      // Koneksi ke database
-      include('koneksi.php');
+      include('koneksi.php');  // Menghubungkan ke database
+      session_start();
+      require_once 'auth.php';
+      checkAccess('admin');
 
       // Query untuk mendapatkan maksimal 4 feedback terbaru dari database
       $sql = "SELECT * FROM feedback_toko ORDER BY id DESC LIMIT 4";
@@ -109,8 +111,7 @@
 
     <!-- Tombol aksi -->
     <div class="flex justify-end gap-4 mt-6">
-      <button onclick="window.location.href='berifeedbacktoko-pengunjung.php'" class="bg-yellow-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-black"> Nilai Toko</button>
-      <button onclick="window.location.href='tampilanfeedbacktoko-pengunjung.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"> Selesai</button>
+      <button onclick="window.location.href='tampilanfeedbacktoko-admin.php'" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"> Selesai</button>
     </div>
   </main>
 </div>

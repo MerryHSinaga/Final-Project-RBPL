@@ -1,3 +1,10 @@
+<?php
+include('koneksi.php');  // Menghubungkan ke database
+session_start();
+require_once 'auth.php';
+checkAccess('admin');
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -150,10 +157,11 @@
       </div>
       <h1 class="text-xl font-extrabold tracking-widest mb-6">MJ SPORT</h1>
       <nav class="space-y-3 w-full">
-        <a href="profiltoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
-        <a href="aktivitastoko-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
-        <a href="daftarproduk-pengunjung.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">📦 Data Produk</a>
-        <a href="tampilanfeedbacktoko-pengunjung.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">💬 Feedback Pengunjung</a>
+        <a href="profiltoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
+        <a href="aktivitastoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
+        <a href="daftarproduk-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">📦 Data Produk</a>
+        <a href="tampilanfeedbacktoko-admin.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">💬 Feedback Pengunjung</a>
+        <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
       </nav>
     </aside>
 
@@ -162,7 +170,7 @@
       <div class="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-xl shadow-md max-w-3xl mx-auto">
         <h2 class="text-xl font-bold mb-6 text-center">Bagaimana kepuasan Anda terhadap Toko MJ Sport?</h2>
 
-        <form action="proses_feedback.php" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <form action="proses_feedback-admin.php" method="POST" enctype="multipart/form-data" class="space-y-4">
           <div class="space-y-4">
             <div>
               <label class="block text-sm">Tanggal</label>
@@ -220,7 +228,7 @@
       <button id="close-modal" class="close-btn">×</button>
       <h3 class="text-green-600 text-xl font-bold">Berhasil Menyimpan !</h3>
       <p class="text-black mb-4">Cek datamu di bawah</p>
-      <a href="tampilanfeedbacktoko-pengunjung.php" class="block bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-full text-sm transition">Buka</a>
+      <a href="tampilanfeedbacktoko-admin.php" class="block bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-full text-sm transition">Buka</a>
     </div>
   </div>
 

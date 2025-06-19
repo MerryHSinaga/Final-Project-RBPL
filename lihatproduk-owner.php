@@ -1,5 +1,8 @@
 <?php
-include 'koneksi.php'; // koneksi ke database
+session_start();
+require_once 'koneksi.php';
+require_once 'auth.php';
+checkAccess('owner');
 
 // Cek apakah parameter id dikirim
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -38,7 +41,7 @@ if (!$data) {
       </svg>
       Kembali
     </button>
-    <a href="profiladmin.php" class="bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md p-2 rounded-full shadow-md transition">
+    <a href="profilowner.php" class="bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md p-2 rounded-full shadow-md transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.828 0 5.433.877 7.879 2.363M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
@@ -53,16 +56,16 @@ if (!$data) {
       </div>
       <h1 class="text-xl font-extrabold tracking-widest mb-6">MJ SPORT</h1>
       <nav class="space-y-3 w-full">
-        <a href="profiltoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
+        <a href="profiltoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
           👥 Profil Perusahaan
         </a>
-        <a href="aktivitastoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
+        <a href="aktivitastoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
           🏪 Aktivitas Toko
         </a>
-        <a href="daftarproduk-admin.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">
+        <a href="daftarproduk-owner.php" class="flex items-center gap-3 bg-white text-[#123458] py-2 px-4 rounded-lg font-semibold">
           📦 Data Produk
         </a>
-        <a href="tampilanfeedbacktoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
+        <a href="tampilanfeedbacktoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
           💬 Feedback Pengunjung
         </a>
         <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
@@ -100,7 +103,7 @@ if (!$data) {
       <span class="bg-blue-500 text-white px-4 py-2 rounded-lg">
         Rating: <?= $data['rating']; ?>/5
       </span>
-      <button onclick="window.location.href='lihatulasan-admin.php?id=<?= $id ?>'" class="bg-white text-[#123458] px-4 py-2 rounded-lg font-semibold hover:bg-opacity-80 transition">
+      <button onclick="window.location.href='lihatulasan-owner.php?id=<?= $id ?>'" class="bg-white text-[#123458] px-4 py-2 rounded-lg font-semibold hover:bg-opacity-80 transition">
         Lihat Ulasan
       </button>
     </div>

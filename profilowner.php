@@ -20,7 +20,7 @@ $profile = $result->fetch_assoc();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Profil Admin - MJ SPORT</title>
+  <title>Profil owner - MJ SPORT</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-[linear-gradient(to_bottom,_#123458_62%,_#030303_100%)] text-white font-sans">
@@ -33,7 +33,7 @@ $profile = $result->fetch_assoc();
     </svg>
     Kembali
   </button>
-  <a href="profiladmin.php" class="bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md p-2.5 rounded-full shadow-lg transition">
+  <a href="profilowner.php" class="bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md p-2.5 rounded-full shadow-lg transition">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.828 0 5.433.877 7.879 2.363M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
@@ -48,10 +48,10 @@ $profile = $result->fetch_assoc();
     </div>
     <h1 class="text-2xl font-extrabold tracking-widest mb-10">MJ SPORT</h1>
     <nav class="space-y-4 w-full">
-      <a href="profiltoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
-      <a href="aktivitastoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
-      <a href="daftarproduk-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">📦 Data Produk</a>
-      <a href="tampilanfeedbacktoko-admin.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">💬 Feedback Pengunjung</a>
+      <a href="profiltoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">👥 Profil Perusahaan</a>
+      <a href="aktivitastoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">🏪 Aktivitas Toko</a>
+      <a href="daftarproduk-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">📦 Data Produk</a>
+      <a href="tampilanfeedbacktoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">💬 Feedback Pengunjung</a>
       <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
     </nav>
   </aside>
@@ -62,7 +62,7 @@ $profile = $result->fetch_assoc();
       <div class="bg-[#0d2236] rounded-xl p-6 text-center">
         <h2 class="text-xl font-bold mb-4">Biodata</h2>
         <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-white">
-          <img src="<?= htmlspecialchars($profile['photo'] ?? 'fotoprofiladmin.jpg') ?>" alt="Foto Profil" class="w-full h-full object-cover">
+          <img src="<?= htmlspecialchars($profile['photo'] ?? 'fotoprofilowner.jpg') ?>" alt="Foto Profil" class="w-full h-full object-cover">
         </div>
       </div>
 

@@ -1,6 +1,8 @@
 <?php
-// Mulai sesi jika diperlukan
+include('koneksi.php');  // Menghubungkan ke database
 session_start();
+require_once 'auth.php';
+checkAccess('owner');
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +56,7 @@ session_start();
         <a href="tampilanfeedbacktoko-owner.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">
           💬 Feedback Pengunjung
         </a>
+        <a href="logout.php" class="flex items-center gap-3 hover:bg-white hover:text-[#123458] py-2 px-4 rounded-lg transition">⏻ Logout</a>
       </nav>
     </aside>
 

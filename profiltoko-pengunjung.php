@@ -1,6 +1,5 @@
 <?php
-// Mulai sesi jika diperlukan
-session_start();
+include('koneksi.php');
 ?>
 
 <!DOCTYPE html>

@@ -1,8 +1,8 @@
 <?php
+include('koneksi.php');  // Menghubungkan ke database
 session_start();
-require_once 'koneksi.php';
 require_once 'auth.php';
-checkAccess('admin');
+checkAccess('owner');
 
 // Cek apakah sudah login dan role-nya owner
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'owner') {

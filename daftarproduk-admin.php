@@ -42,12 +42,14 @@ $keyword = isset($_GET['keyword']) ? strtolower(trim($_GET['keyword'])) : '';
   <main class="ml-80 p-10 space-y-8 w-full">
     <!-- Search -->
     <form method="GET" class="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl px-6 py-4 shadow-md">
-      <h2 class="font-bold mb-2">Selamat datang! Ingin melihat produk apa hari ini?</h2>
-      <div class="flex gap-3 mt-2">
-        <input type="text" name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Cari produk..." class="w-full px-4 py-2 bg-white/30 text-black placeholder-gray-700 rounded-full focus:outline-none">
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full">Cari</button>
-      </div>
-    </form>
+  <h2 class="font-bold mb-2">Selamat datang! Ingin melihat produk apa hari ini?</h2>
+  <div class="flex items-center gap-3 mt-2">
+    <input type="text" name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Cari produk..." 
+           class="flex-grow px-4 py-2 bg-white/30 text-black placeholder-gray-700 rounded-full focus:outline-none">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full whitespace-nowrap">Cari</button>
+    <a href="tambahproduk-admin.php" class="bg-green-500 hover:bg-green-600 w-11 h-11 rounded-full flex items-center justify-center text-white text-2xl shadow-md" title="Tambah Produk">➕</a>
+  </div>
+</form>
 
     <!-- Produk -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

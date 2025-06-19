@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once 'koneksi.php';
+session_start();
 
 $error_message = '';
 

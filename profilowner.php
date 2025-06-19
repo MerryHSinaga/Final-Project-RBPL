@@ -1,7 +1,7 @@
 <?php
+require_once 'koneksi.php';
 session_start();
 require_once 'auth.php';
-require_once 'koneksi.php';
 checkAccess('owner');
 
 // Ambil user_id dari sesi login

@@ -4,7 +4,7 @@
 // Fungsi cek akses hanya untuk 1 role (admin / owner / dll)
 function checkAccess($expected_role) {
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== $expected_role) {
-        header('Location: login.php?error=unauthorized');
+        header('Location: login.php?error=wronged');
         exit();
     }
 }

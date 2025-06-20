@@ -7,7 +7,7 @@ checkAccess('owner');
 // Cek apakah sudah login dan role-nya owner
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'owner') {
     // Redirect ke halaman login atau halaman error
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 ?>

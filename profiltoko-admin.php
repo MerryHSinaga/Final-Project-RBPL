@@ -7,7 +7,7 @@ checkAccess('admin');
 // Cek apakah sudah login dan role-nya admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     // Redirect ke halaman login atau halaman error
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 ?>

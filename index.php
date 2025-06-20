@@ -80,7 +80,7 @@ if ($result->num_rows === 1) {
                 </div>
             <?php endif; ?>
 
-            <form action="login.php" method="post" class="space-y-4">
+            <form action="index.php" method="post" class="space-y-4">
                 <div class="relative">
                     <input type="email" name="email" placeholder="Email Address" required
                         class="w-full py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-white text-black">

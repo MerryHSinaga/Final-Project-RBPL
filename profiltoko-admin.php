@@ -98,7 +98,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <!-- Logo -->
         <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 text-center shadow-lg">
           <h3 class="text-xl font-bold mb-4">LOGO</h3>
-          <img src="LogoMJ.png" alt="MJ Sport Logo" class="w-full h-60 object-contain mx-auto">
+          <img src="logoMJ.png" alt="MJ Sport Logo" class="w-full h-60 object-contain mx-auto">
 
         </div>
         
